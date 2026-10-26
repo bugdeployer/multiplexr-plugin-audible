@@ -1,7 +1,7 @@
 {
   "id": "com.bugdeployer.audible",
-  "version": "0.1.0",
-  "name": "Audible metadata",
+  "version": "0.2.0",
+  "name": "Audible US metadata",
   "entry": "plugin.js",
   "protocol": {
     "min": 1,
@@ -9,41 +9,19 @@
   },
   "capabilities": {
     "required": [
-      "ui.present",
-      "settings.read",
-      "settings.write"
+      "metadata.provide",
+      "http.request"
     ],
     "optional": []
   },
   "contributions": [
     {
-      "id": "com.bugdeployer.audible:open",
-      "family": "ui.destination",
-      "title": "Open plugin",
-      "handler": "plugin.open"
-    },
-    {
-      "id": "com.bugdeployer.audible:settings",
-      "family": "settings.section",
-      "title": "Plugin settings",
-      "description": "Choose the message shown by the plugin.",
-      "icon": "extension",
-      "schemaVersion": 1,
-      "scopes": [
-        "app"
-      ],
-      "fields": [
-        {
-          "id": "com.bugdeployer.audible:greeting",
-          "type": "text",
-          "label": "Message",
-          "accessibleLabel": "Plugin message",
-          "maxLength": 200,
-          "default": "Hello from your plugin.",
-          "scopes": [
-            "app"
-          ]
-        }
+      "id": "com.bugdeployer.audible:metadata",
+      "family": "metadata.provider",
+      "title": "Audible US",
+      "handler": "metadata.search",
+      "kinds": [
+        "audiobook"
       ]
     }
   ]
